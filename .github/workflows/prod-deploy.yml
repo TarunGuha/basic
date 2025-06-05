@@ -1,4 +1,4 @@
-name: Deploy FastAPI to AWS Lambda
+name: Deploy Basic To AWS Lambda Using ECR
 
 on:
   push:
@@ -6,9 +6,9 @@ on:
       - main
 
 env:
-  IMAGE_NAME: fastapi-app
-  ECR_REPOSITORY: fastapi-app
-  LAMBDA_FUNCTION_NAME: myFunction
+  IMAGE_NAME: basic
+  ECR_REPOSITORY: basic
+  LAMBDA_FUNCTION_NAME: basic
   AWS_REGION: ${{ secrets.AWS_REGION }}
   AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
   ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
