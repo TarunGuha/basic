@@ -11,4 +11,4 @@ handler = Mangum(app)
 
 @app.get("/")
 async def root() -> str:
-    return "Hello, world!"
+    return "Basic"
