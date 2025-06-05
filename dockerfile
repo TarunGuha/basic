@@ -1,6 +1,6 @@
 FROM ghcr.io/astral-sh/uv:0.7.10 AS uv
 
-FROM public.ecr.aws/lambda/python:3.13 AS builder
+FROM public.ecr.aws/lambda/python:3.13-arm64 AS builder
 
 ENV UV_COMPILE_BYTECODE=1
 
@@ -15,7 +15,7 @@ RUN --mount=from=uv,source=/uv,target=/bin/uv \
     uv export --frozen --no-emit-workspace --no-dev --no-editable -o requirements.txt && \
     uv pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
 
-FROM public.ecr.aws/lambda/python:3.13
+FROM public.ecr.aws/lambda/python:3.13-arm64
 
 COPY --from=builder ${LAMBDA_TASK_ROOT} ${LAMBDA_TASK_ROOT}
 
